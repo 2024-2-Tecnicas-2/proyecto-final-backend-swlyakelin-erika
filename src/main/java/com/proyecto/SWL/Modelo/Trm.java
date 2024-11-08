@@ -15,7 +15,7 @@ public class Trm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Para que se cree solo el id y se genere automaticamente
     private Long idTrm;
-    private double valorActual;
+    private Double valorActual;
     private Date fecha;
 
     public void consultarTRM(){}

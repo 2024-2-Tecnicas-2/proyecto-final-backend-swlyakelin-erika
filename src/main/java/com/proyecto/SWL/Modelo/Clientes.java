@@ -14,8 +14,8 @@ public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Para que se cree solo el id y se genere automaticamente
     private Long idCliente;
-    private long numeroCuenta;
-    private double saldoCuenta;
+    private Long numeroCuenta;
+    private Double saldoCuenta;
 
 
 

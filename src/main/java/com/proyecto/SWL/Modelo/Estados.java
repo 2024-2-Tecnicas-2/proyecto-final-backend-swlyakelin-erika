@@ -19,7 +19,6 @@ public class Estados {
     private Long idEstado;
     private String nombre;
     private String tipoEstado;
-    private Boolean estado;
 
     @OneToMany(mappedBy = "estados" , cascade = {CascadeType.MERGE,CascadeType.PERSIST}) // mappeBy es para busca el objecto , cascade = sirve para la crud esta relacion de merge y persist es para controlar las relaciones
     private Set<Usuario> usuario = new HashSet<>(); // Set =  Los elementos que almacenes en un Set no pueden ser duplicados HashSet = HashSet es una implementación de la interfaz Set que no garantiza el orden de los elementos, pero asegura que cada objeto sea único.

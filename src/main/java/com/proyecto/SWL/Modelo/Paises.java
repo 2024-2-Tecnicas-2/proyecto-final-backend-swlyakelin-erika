@@ -17,7 +17,7 @@ import java.util.Set;
 public class Paises {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idPais;
+    private Long idPais;
     @NotNull(message = "Este campo no puede estar vacio")
     private String nombre;
     @NotNull(message = "Este campo no puede estar vacio")

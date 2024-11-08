@@ -19,7 +19,7 @@ public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idRol;
+    private Long idRol;
     private String nombre;
 
     @OneToMany(mappedBy = "roles" , cascade = {CascadeType.MERGE,CascadeType.PERSIST}) // mappeBy es para busca el objecto , cascade = sirve para la crud esta relacion de merge y persist es para controlar las relaciones

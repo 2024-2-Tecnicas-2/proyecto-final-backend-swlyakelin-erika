@@ -20,7 +20,7 @@ public class TipoDocumentos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idDocumento;
+    private Long idDocumento;
     private String nombre;
 
     @OneToMany(mappedBy = "tipoDocumento" , cascade = {CascadeType.MERGE,CascadeType.PERSIST}) // mappeBy es para busca el objecto , cascade = sirve para la crud esta relacion de merge y persist es para controlar las relaciones

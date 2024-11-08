@@ -332,7 +332,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de estados</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de paises</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -340,40 +340,31 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Tabla de estados</h6>
-                            <a th:href="@{/Estados/NuevoEstados}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                                <i class="fa-solid fa-plus"></i> Crear estados
+                            <h6 class="font-weight-bold text-primary">Nuevo Registro de Estados</h6>
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fa-solid fa-rotate-left"></i> Volver
                             </a>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success" role="alert" th:if="${param.Correcto}">
-                                Registro Exitoso
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th><i class="fas fa-user"></i> Id estado </th>
-                                        <th><i class="fas fa-envelope"></i> Nombre </th>
-                                        <th><i class="fas fa-calendar"></i> Tipo de estado</th>
+                            <form th:action="@{/Estados/DatosNuevosEstados}" th:object="${estadosVis}" method="post">
+                                <!-- Primera Sección: Información Personal -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tipoEstado">tipoEstado</label>
+                                        <input type="text" class="form-control" id="tipoEstado" th:field="*{tipoEstado}" placeholder="Ingresa tu apellido">
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- Botón de Envío -->
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </form>
 
-                                        <th><i class="fas fa-cogs"></i> Opciones</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="e: ${VisEstados}">
-                                        <th th:text="${e.idEstado}"></th>
-                                        <th th:text="${e.nombre}"></th>
-                                        <th th:text="${e.tipoEstado}"></th>
-                                        <th>
-                                            <a th:href="@{/Estados/EditarEstados/{id}(id=${e.idEstado})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
-                                        </th>
-                                    </tr>
 
-                                    </tbody>
-                                </table>
-                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class Productos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idProducto;
+    private Long idProducto;
     private String nombre;
-    private double precio;
+    private Double precio;
     private String categoria;
     private ArrayList<Estados> estados = new ArrayList<Estados>();
 
