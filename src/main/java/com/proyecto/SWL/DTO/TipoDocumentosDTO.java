@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstadosDTO {
-
-    private Long idEstado;
+public class TipoDocumentosDTO {
+    private Long idDocumento;
     private String nombre;
-    private String tipoEstado;
-}
+    private Long idestados;
+    private String nombreEstado;
 
+}
