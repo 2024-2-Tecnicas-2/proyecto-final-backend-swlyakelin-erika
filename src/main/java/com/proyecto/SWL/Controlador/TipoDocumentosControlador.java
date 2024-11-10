@@ -60,7 +60,7 @@ public class TipoDocumentosControlador {
         if (result.hasErrors()){
             return "Admin/TipoDocumentos/EditarTipoDocumento?ErrorDocumento";
         }if (tipoDocumentosDTO.getIdDocumento()==null){
-            throw new IllegalArgumentException("No puede ser nulo");
+            throw new IllegalArgumentException("No puede ser nulo  ID TIPODOC");
         }
        tipoDocumentoSer.EditarDDocumento(tipoDocumentosDTO);
         return "redirect:/TipoDocumento/verDocumentos?CorrectoE";

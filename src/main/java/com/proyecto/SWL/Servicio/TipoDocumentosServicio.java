@@ -64,7 +64,6 @@ public class TipoDocumentosServicio {
                         .orElseThrow(()->new RuntimeException("No se encontro el id estado"));
         d.setEstados(estados);
         iTipoDocumentos.save(d);
-
     }
 
 
