@@ -69,10 +69,10 @@
                 <div class="bg-white py-2 collapse-inner rounded">
 
                     <a class="collapse-item" th:href="@{/paises}">Paises</a>
-                    <a class="collapse-item" href="#">Estados del sistema</a>
-                    <a class="collapse-item" href="#">Roles</a>
-                    <a class="collapse-item" href="#">Tipos de documentos</a>
-                    <a class="collapse-item" href="#">Administrador</a>
+                    <a class="collapse-item" th:href="@{/Estados/Verestados}">Estados del sistema</a>
+                    <a class="collapse-item" th:href="@{/Roles/roles}">Roles</a>
+                    <a class="collapse-item" th:href="@{/TipoDocumento/verDocumentos}">Tipos de documentos</a>
+                    <a class="collapse-item" th:href="@{#}">Administrador</a>
 
                 </div>
             </div>
@@ -332,7 +332,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de estados</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de Roles</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -340,20 +340,20 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Tabla de estados</h6>
-                            <a th:href="@{/Estados/NuevoEstados}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                                <i class="fa-solid fa-plus"></i> Crear estados
+                            <h6 class="font-weight-bold text-primary">Tabla de Roles</h6>
+                            <a th:href="@{/Roles/NuevoRol}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fa-solid fa-plus"></i> Crear Roles
                             </a>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success" role="alert" th:if="${param.Correcto}">
+                            <div class="alert alert-success" role="alert" th:if="${param.CorrectoRoles}">
                                 Registro Exitoso
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th><i class="fas fa-user"></i> Id estado </th>
+                                        <th><i class="fas fa-user"></i> Id Rol </th>
                                         <th><i class="fas fa-envelope"></i> Nombre </th>
                                         <th><i class="fas fa-calendar"></i> Tipo de estado</th>
 
@@ -361,12 +361,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="e: ${VisEstados}">
-                                        <th th:text="${e.idEstado}"></th>
-                                        <th th:text="${e.nombre}"></th>
-                                        <th th:text="${e.tipoEstado}"></th>
+                                    <tr th:each="r: ${VisRoles}">
+                                        <th th:text="${r.idRol}"></th>
+                                        <th th:text="${r.nombre}"></th>
                                         <th>
-                                            <a th:href="@{/Estados/EditarEstados/{id}(id=${e.idEstado})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                            <a th:href="@{/Roles/EditarRoles/{id}(id=${r.idRol})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                             <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
                                         </th>
                                     </tr>

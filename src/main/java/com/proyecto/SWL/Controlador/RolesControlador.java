@@ -18,7 +18,7 @@ public class RolesControlador {
 
     @GetMapping("/roles")
     public String roles (Model model){
-        List<RolesDTO> roles = rolesServicio.visualizarRoles();
+        List<RolesDTO> roles = rolesServicio.visualizar();
         model.addAttribute("VisRoles", roles);
         return "Admin/Roles/roles";
     }
@@ -36,12 +36,12 @@ public class RolesControlador {
             return "Admin/Roles/NuevoRol?Error";
         }
         rolesServicio.GuardarNuevoRol(rolesDTO);
-        return "redirect:/Roles/roles?Correcto";
+        return "redirect:/Roles/roles?CorrectoRoles";
     }
 
     @GetMapping("/EditarRoles/{id}")
     public String editarRoles(@PathVariable("id")Long id, Model model){
-        RolesDTO rolesDTO = rolesServicio.ObtenerRolesId(id);
+        RolesDTO rolesDTO = rolesServicio.ObtenerRolId(id);
         model.addAttribute("editarRoles", rolesDTO);
         return "Admin/Roles/EditarRoles";
     }
@@ -54,7 +54,7 @@ public class RolesControlador {
             throw new IllegalArgumentException("No puede ser nulo");
         }
         rolesServicio.EditarRoles(rolesDTO);
-        return "redirect:/Roles/roles?EditarCorrecto";
+        return "redirect:/Roles/roles?EditarRolCorrecto";
     }
 
 }
