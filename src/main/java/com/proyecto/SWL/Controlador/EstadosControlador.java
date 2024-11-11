@@ -1,8 +1,6 @@
 package com.proyecto.SWL.Controlador;
 import com.proyecto.SWL.DTO.EstadosDTO;
-import com.proyecto.SWL.DTO.PaisesDTO;
 import com.proyecto.SWL.Servicio.EstadosServicio;
-import com.proyecto.SWL.Servicio.PaisesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

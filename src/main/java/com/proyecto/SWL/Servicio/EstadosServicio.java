@@ -2,9 +2,7 @@ package com.proyecto.SWL.Servicio;
 
 
 import com.proyecto.SWL.DTO.EstadosDTO;
-import com.proyecto.SWL.DTO.PaisesDTO;
 import com.proyecto.SWL.Modelo.Estados;
-import com.proyecto.SWL.Modelo.Paises;
 import com.proyecto.SWL.Repositorio.IEstados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
