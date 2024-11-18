@@ -18,6 +18,5 @@ public class Clientes {
     private Double saldoCuenta;
 
 
-
     public void realizarCompra(){}
 }

@@ -18,22 +18,24 @@ public class ProductosServicio {
 
     private ProductosDTO productosDTO(Productos productos){
         ProductosDTO productosDTO = new ProductosDTO();
-        productosDTO.setIdProducto(productos.getIdProducto());
+        productosDTO.setIdProductos(productos.getIdProducto());
         productosDTO.setNombre(productos.getNombre());
-        productosDTO.setTipoProducto(productos.getTipoProducto());
+        productosDTO.setPrecio(productos.getPrecio());
+        productosDTO.setCategoria(productos.getCategoria());
 
         return productosDTO;
     }
 
-    public List<ProductosDTO> visualizarEstados(){
+    public List<ProductosDTO> visualizarProductos(){
         List<Productos> productos = iProductos.findAll();
         return productos.stream().map(this::productosDTO).collect(Collectors.toList());
     }
 
-    public void GuardarNuevoEstado(ProductosDTO productosDTO){
+    public void GuardarNuevoProducto(ProductosDTO productosDTO){
         Productos p = new Productos();
         p.setNombre(productosDTO.getNombre());
-        p.setTipoProducto(productosDTO.getTipoProducto());
+        p.setPrecio(productosDTO.getPrecio());
+        p.setCategoria(productosDTO.getCategoria());
 
         iProductos.save(p);
     }
@@ -47,10 +49,11 @@ public class ProductosServicio {
 
 
     public void EditarProductos(ProductosDTO productosDTO){
-        Productos p = iProductos.findById(productosDTO.getIdProducto())
+        Productos p = iProductos.findById(productosDTO.getIdProductos())
                 .orElseThrow(()->new RuntimeException("No se encontro el producto"));
         p.setNombre(productosDTO.getNombre());
-        p.setTipoProducto(productosDTO.getTipoProducto());
+        p.setPrecio(productosDTO.getPrecio());
+        p.setCategoria(productosDTO.getCategoria());
 
         iProductos.save(p);
     }

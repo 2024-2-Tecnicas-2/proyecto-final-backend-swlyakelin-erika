@@ -18,7 +18,6 @@ public class Productos {
     private String nombre;
     private Double precio;
     private String categoria;
-    private ArrayList<Estados> estados = new ArrayList<Estados>();
 
     public void crearProductos(){}
     public void editarProductos(){}
