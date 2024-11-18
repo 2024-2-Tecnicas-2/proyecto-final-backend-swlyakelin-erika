@@ -52,7 +52,4 @@ public class Usuario {
     @JoinColumn(name = "idPaises") // JoinColumn sirve para nombrar la columna de la relacion
     private Paises paises; // llamando el objecto
 
-    public void iniciarSesion(){}
-    public void registrarUsuario(){}
-    public void cerrarSesion(){}
 }
