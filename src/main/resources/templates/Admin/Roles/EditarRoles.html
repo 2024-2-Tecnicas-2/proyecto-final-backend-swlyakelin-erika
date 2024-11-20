@@ -60,20 +60,17 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link" th:href=@{"#"} aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Tablas parametrizables</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-
                     <a class="collapse-item" th:href="@{/paises}">Paises</a>
-                    <a class="collapse-item" href="#">Estados del sistema</a>
-                    <a class="collapse-item" href="#">Roles</a>
-                    <a class="collapse-item" href="#">Tipos de documentos</a>
-                    <a class="collapse-item" href="#">Administrador</a>
-
+                    <a class="collapse-item" th:href="@{/Estados/Verestados}">Estados del sistema</a>
+                    <a class="collapse-item" th:href="@{/Roles/roles}">Roles</a>
+                    <a class="collapse-item" th:href="@{/TipoDocumento/verDocumentos}">Tipos de documentos</a>
+                    <a class="collapse-item" th:href="@{#}">Administrador</a>
                 </div>
             </div>
         </li>
@@ -355,6 +352,12 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="nombre">Nombre</label>
                                         <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>estados</label>
+                                        <select class="form-control" th:field="*{idestados}">
+                                            <option th:each="e: ${estados}" th:value="${e.idEstado}" th:text="${e.nombre}"></option>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr>

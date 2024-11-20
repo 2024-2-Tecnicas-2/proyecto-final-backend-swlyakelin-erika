@@ -12,7 +12,7 @@
     <title>SWL</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" th:href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link
@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" th:href=" @{#}" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link" th:href=@{"#"} aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Tablas parametrizables</span>
             </a>
@@ -329,7 +329,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de paises</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de Documentos</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -337,30 +337,57 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Nuevo Registro de Paises</h6>
+                            <h6 class="font-weight-bold text-primary">Nuevo Registro de Documentos</h6>
                             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                                 <i class="fa-solid fa-rotate-left"></i> Volver
                             </a>
                         </div>
                         <div class="card-body">
-                            <form th:action="@{/Estados/EditarEstadoFinal}" th:object="${editarEstados}" method="post">
+                            <form th:action="@{/user/DatosNuevosUsuarios}" th:object="${NuevoUsuario}" method="post">
                                 <!-- Primera Sección: Información Personal -->
-                                <div>
-                                    <input type="hidden" th:field="*{idEstado}">
-                                </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email">email</label>
+                                            <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Ingresa tu email">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="contrasena">contraseña</label>
+                                            <input type="text" class="form-control" id="contrasena" th:field="*{contrasena}" placeholder="Ingresa tu contraseña">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="fechaNacimiento">fecha Nacimiento</label>
+                                            <input type="text" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="Ingresa tu Fecha Nacimiento">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label>tipo Documento</label>
+                                            <select class="form-control" th:field="*{idTipoD}">
+                                                <option th:each="d: ${documentos}" th:value="${d.idDocumento}" th:text="${d.nombre}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="numeroDocumento">numero Documento</label>
+                                            <input type="text" class="form-control" id="numeroDocumento" th:field="*{numeroDocumento}" placeholder="Ingresa tu numeroDocumento">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label>Roles</label>
+                                            <select class="form-control" th:field="*{idRoles}">
+                                                <option th:each="r: ${roles}" th:value="${r.idRol}" th:text="${r.nombre}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label>Paises</label>
+                                            <select class="form-control" th:field="*{idPaises}">
+                                                <option th:each="p: ${paises}" th:value="${p.idPais}" th:text="${p.nombre}"></option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="tipoEstado">tipoEstado</label>
-                                        <input type="text" class="form-control" id="tipoEstado" th:field="*{tipoEstado}" placeholder="Ingresa tu apellido">
-                                    </div>
-                                </div>
                                 <hr>
                                 <!-- Botón de Envío -->
-                                <button type="submit" class="btn btn-primary">Editar</button>
+                                <button type="submit" class="btn btn-primary">Registrar</button>
                             </form>
 
 

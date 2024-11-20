@@ -1,5 +1,7 @@
 package com.proyecto.SWL.Controlador;
+import com.proyecto.SWL.DTO.EstadosDTO;
 import com.proyecto.SWL.DTO.RolesDTO;
+import com.proyecto.SWL.Servicio.EstadosServicio;
 import com.proyecto.SWL.Servicio.RolesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ public class RolesControlador {
 
     @Autowired
     private RolesServicio rolesServicio;
+    @Autowired
+    private EstadosServicio estadosServicio;
 
     @GetMapping("/roles")
     public String roles (Model model){
@@ -43,6 +47,8 @@ public class RolesControlador {
     public String editarRoles(@PathVariable("id")Long id, Model model){
         RolesDTO rolesDTO = rolesServicio.ObtenerRolId(id);
         model.addAttribute("editarRoles", rolesDTO);
+        List<EstadosDTO> estadosDTO = estadosServicio.visualizarEstados();
+        model.addAttribute("estados" , estadosDTO);
         return "Admin/Roles/EditarRoles";
     }
 

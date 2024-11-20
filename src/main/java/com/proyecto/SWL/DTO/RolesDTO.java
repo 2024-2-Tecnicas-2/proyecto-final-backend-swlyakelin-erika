@@ -11,5 +11,7 @@ public class RolesDTO {
 
     private Long idRol;
     private String nombre;
+    private Long idestados;
+    private String estados;
 }
 
