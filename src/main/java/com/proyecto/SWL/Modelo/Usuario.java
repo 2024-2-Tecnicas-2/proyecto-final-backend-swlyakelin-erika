@@ -33,8 +33,8 @@ public class Usuario {
     private String nombre;
     private String email;
     private String contrasena;
-    private Date fechaNacimiento;
-    private String numeroDocumento;
+    private String fechaNacimiento;
+    private Integer numeroDocumento;
 
     @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
     @JoinColumn(name = "idDocumento") // JoinColumn sirve para nombrar la columna de la relacion

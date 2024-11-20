@@ -12,5 +12,6 @@ public class EstadosDTO {
     private Long idEstado;
     private String nombre;
     private String tipoEstado;
+
 }
 

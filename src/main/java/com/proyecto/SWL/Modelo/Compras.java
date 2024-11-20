@@ -21,7 +21,12 @@ public class Compras {
     private Date fechaVenta;
     private Double monto;
     private Double trmAplicada;
-    private ArrayList<Estados> estados = new ArrayList<Estados>();
+
+    @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
+    @JoinColumn(name = "idEstado") // JoinColumn sirve para nombrar la columna de la relacion
+    private Estados estados; // llamando el objecto
+
+
     private ArrayList<Productos> producto = new ArrayList<Productos>();
     private ArrayList<Usuario> usuario = new ArrayList<Usuario>();
     private ArrayList<Pagos>  metodoPago = new ArrayList<Pagos>();

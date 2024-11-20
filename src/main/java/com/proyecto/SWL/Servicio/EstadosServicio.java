@@ -4,6 +4,9 @@ package com.proyecto.SWL.Servicio;
 import com.proyecto.SWL.DTO.EstadosDTO;
 import com.proyecto.SWL.Modelo.Estados;
 import com.proyecto.SWL.Repositorio.IEstados;
+import com.proyecto.SWL.Repositorio.IRoles;
+import com.proyecto.SWL.Repositorio.ITipoDocumentos;
+import com.proyecto.SWL.Repositorio.IUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +18,18 @@ public class EstadosServicio {
 
     @Autowired
     private IEstados iEstados;
+    @Autowired
+    private ITipoDocumentos iTipoDocumentos;
+    @Autowired
+    private IRoles iRoles;
+    @Autowired
+    private IUsuarios iUsuarios;
 
     private EstadosDTO estadosDTO(Estados estados){
         EstadosDTO estadosDTO = new EstadosDTO();
         estadosDTO.setIdEstado(estados.getIdEstado());
         estadosDTO.setNombre(estados.getNombre());
         estadosDTO.setTipoEstado(estados.getTipoEstado());
-
         return estadosDTO;
     }
 

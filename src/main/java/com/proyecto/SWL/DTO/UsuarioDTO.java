@@ -12,10 +12,14 @@ public class UsuarioDTO {
     private String nombre;
     private String email;
     private String contrasena;
-    private Date fechaNacimiento;
-    private String numeroDocumento;
+    private String fechaNacimiento;
+    private Integer numeroDocumento;
+    private Long idEstados;
     private String estados;
+    private Long idRoles;
     private String roles;
+    private Long idTipoD;
     private String tipoDocumento;
+    private Long idPaises;
     private String paises;
 }

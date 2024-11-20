@@ -12,7 +12,7 @@
     <title>SWL</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" th:href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link
@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" th:href=" @{#}" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link" th:href=@{"#"} aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Tablas parametrizables</span>
             </a>
@@ -74,7 +74,6 @@
                 </div>
             </div>
         </li>
-
         <!-- Nav Item - Utilities Collapse Menu -->
 
 
@@ -329,7 +328,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de paises</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de Usuarios</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -337,34 +336,53 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Nuevo Registro de Paises</h6>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                                <i class="fa-solid fa-rotate-left"></i> Volver
+                            <h6 class="font-weight-bold text-primary">Tabla de Usuarios</h6>
+                            <a th:href="@{/user/NuevoUsuario}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fa-solid fa-plus"></i> Crear Usuario
                             </a>
                         </div>
                         <div class="card-body">
-                            <form th:action="@{/Estados/EditarEstadoFinal}" th:object="${editarEstados}" method="post">
-                                <!-- Primera Sección: Información Personal -->
-                                <div>
-                                    <input type="hidden" th:field="*{idEstado}">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="tipoEstado">tipoEstado</label>
-                                        <input type="text" class="form-control" id="tipoEstado" th:field="*{tipoEstado}" placeholder="Ingresa el tipo de estado">
-                                    </div>
-                                </div>
-                                <hr>
-                                <!-- Botón de Envío -->
-                                <button type="submit" class="btn btn-primary">Editar</button>
-                            </form>
+                            <div class="alert alert-success" role="alert" th:if="${param.CorrectoU}">
+                                Registro Exitoso
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th><i class="fas fa-user"></i> Id Usuario </th>
+                                        <th><i class="fas fa-envelope"></i> Nombre </th>
+                                        <th><i class="fas fa-envelope"></i> Email </th>
+                                        <th><i class="fas fa-user"></i> Contraseña </th>
+                                        <th><i class="fas fa-envelope"></i> fechaNacimiento </th>
+                                        <th><i class="fas fa-envelope"></i> tipoDocumento </th>
+                                        <th><i class="fas fa-envelope"></i> numeroDocumento </th>
+                                        <th><i class="fas fa-user"></i> estados </th>
+                                        <th><i class="fas fa-envelope"></i> roles </th>
+                                        <th><i class="fas fa-envelope"></i> paises </th>
+                                        <th><i class="fas fa-cogs"></i> Opciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="u: ${VisUsuarios}">
+                                        <th th:text="${u.idUsuario}"></th>
+                                        <th th:text="${u.nombre}"></th>
+                                        <th th:text="${u.email}"></th>
+                                        <th th:text="${u.contrasena}"></th>
+                                        <th th:text="${u.fechaNacimiento}"></th>
+                                        <th th:text="${u.tipoDocumento}"></th>
+                                        <th th:text="${u.numeroDocumento}"></th>
+                                        <th th:text="${u.estados}"></th>
+                                        <th th:text="${u.roles}"></th>
+                                        <th th:text="${u.paises}"></th>
+                                        <th>
+                                            <a th:href="@{/user/EditarUsuario/{id}(id=${u.idUsuario})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                        </th>
+                                    </tr>
 
-
-
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
