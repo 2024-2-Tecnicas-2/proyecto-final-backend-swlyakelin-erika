@@ -14,47 +14,47 @@ import java.util.List;
 public class ComprasControlador {
 
     @Autowired
-    private EstadosServicio estadosServicio;
+    private ComprasServicio comprasServicio;
 
-    @GetMapping("/Verestados")
-    public String Verestados (Model model){
-        List<EstadosDTO> estados = estadosServicio.visualizarEstados();
-        model.addAttribute("VisEstados", estados);
-        return "Admin/Estados/estados";
+    @GetMapping("/Vercompras")
+    public String Vercompras (Model model){
+        List<ComprasDTO> compras = comprasServicio.visualizarVenta();
+        model.addAttribute("VisCompras", compras);
+        return "Admin/Compras/compras";
     }
 
-    @GetMapping("/NuevoEstados") //Visualizar formulario
-    public String nuevosEstados(Model model) {
-        EstadosDTO estadosDTO = new EstadosDTO();
-        model.addAttribute("estadosVis", estadosDTO);
-        return "Admin/Estados/NuevoEstados";
+    @GetMapping("/NuevaCompra") //Visualizar formulario
+    public String nuevasCompras(Model model) {
+        ComprasDTO comprasDTO = new ComprasDTO();
+        model.addAttribute("comprasVis", comprasDTO);
+        return "Admin/Compras/NuevasCompras";
     }
 
-    @PostMapping("/DatosNuevosEstados")
-    public String datosNuevos(@ModelAttribute("estadosVis") EstadosDTO estadosDTO, BindingResult result, Model model) {
+    @PostMapping("/DatosNuevasCompras")
+    public String datosNuevos(@ModelAttribute("comprasVis") ComprasDTO comprasDTO, BindingResult result, Model model) {
         if (result.hasErrors()){
-            return "Admin/Estados/NuevoEstados?Error";
+            return "Admin/Compras/NuevaCompra?Error";
         }
-        estadosServicio.GuardarNuevoEstado(estadosDTO);
-        return "redirect:/Estados/Verestados?Correcto";
+        comprasServicio.GuardarNuevaCompra(comprasDTO);
+        return "redirect:/Compras/Vercompras?Correcto";
     }
 
-    @GetMapping("/EditarEstados/{id}")
-    public String editarEstados(@PathVariable("id")Long id, Model model){
-        EstadosDTO estadosDTO = estadosServicio.ObtenerEstadosId(id);
-        model.addAttribute("editarEstados", estadosDTO);
-        return "Admin/Estados/EditarEstados";
+    @GetMapping("/EditarCompras/{id}")
+    public String editarCompras(@PathVariable("id")Long id, Model model){
+        ComprasDTO comprasDTO = comprasServicio.ObtenerCompraId(id);
+        model.addAttribute("editarCompras", comprasDTO);
+        return "Admin/Compras/EditarCompras";
     }
 
     @PostMapping("/EditarEstadoFinal")
-    public String EditarEstadoFinal(@ModelAttribute("editarEstados")EstadosDTO estadosDTO, BindingResult result, Model model){
+    public String EditarEstadoFinal(@ModelAttribute("editarCompras")ComprasDTO comprasDTO, BindingResult result, Model model){
         if (result.hasErrors()){
             return "Admin/Estados/EditarEstados?ErrorEstados";
-        }if (estadosDTO.getIdEstado()==null){
+        }if (comprasDTO.getIdVenta()==null){
             throw new IllegalArgumentException("No puede ser nulo");
         }
-        estadosServicio.EditarEstados(estadosDTO);
-        return "redirect:/Estados/Verestados?EditarCorrecto";
+        comprasServicio.EditarCompra(comprasDTO);
+        return "redirect:/Compras/Vercompras?EditarCorrecto";
     }
 
 }

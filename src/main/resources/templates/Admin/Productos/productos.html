@@ -33,7 +33,7 @@
     <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #a800d1">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{index.html}">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -45,7 +45,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" th:href="@{index.html}">
+            <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" th:href="@{#}" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Tablas parametrizables</span>
@@ -70,10 +70,10 @@
 
                     <a class="collapse-item" th:href="@{/paises}">Paises</a>
                     <a class="collapse-item" th:href="@{/Estados/Verestados}">Estados del sistema</a>
-                    <a class="collapse-item" th:href="@{#}">Roles</a>
+                    <a class="collapse-item" th:href="@{/Roles/roles}">Roles</a>
+                    <a class="collapse-item" th:href="@{/Productos/productos}">Productos</a>
                     <a class="collapse-item" th:href="@{/TipoDocumento/verDocumentos}">Tipos de documentos</a>
                     <a class="collapse-item" th:href="@{#}">Administrador</a>
-
 
                 </div>
             </div>
@@ -333,7 +333,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de Estados</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de Productos</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -341,31 +341,42 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Nuevo Registro de Estados</h6>
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                                <i class="fa-solid fa-rotate-left"></i> Volver
+                            <h6 class="font-weight-bold text-primary">Tabla de Productos</h6>
+                            <a th:href="@{/Productos/NuevoProducto}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fa-solid fa-plus"></i> Crear Productos
                             </a>
                         </div>
                         <div class="card-body">
-                            <form th:action="@{/Estados/DatosNuevosEstados}" th:object="${estadosVis}" method="post">
-                                <!-- Primera Sección: Información Personal -->
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa tu nombre">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="tipoEstado">tipoEstado</label>
-                                        <input type="text" class="form-control" id="tipoEstado" th:field="*{tipoEstado}" placeholder="Ingresa tu apellido">
-                                    </div>
-                                </div>
-                                <hr>
-                                <!-- Botón de Envío -->
-                                <button type="submit" class="btn btn-primary">Registrar</button>
-                            </form>
+                            <div class="alert alert-success" role="alert" th:if="${param.CorrectoRoles}">
+                                Registro Exitoso
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th><i class="fas fa-user"></i> Id Producto </th>
+                                        <th><i class="fas fa-envelope"></i> Nombre </th>
+                                        <th><i class="fas fa-calendar"></i> Precio </th>
+                                        <th><i class="fas fa-calendar"></i> Categoria </th>
 
+                                        <th><i class="fas fa-cogs"></i> Opciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="r: ${VisProductos}">
+                                        <th th:text="${r.idProducto}"></th>
+                                        <th th:text="${r.nombre}"></th>
+                                        <th th:text="${r.Precio}"></th>
+                                        <th th:text="${r.Categoria}"></th>
+                                        <th>
+                                            <a th:href="@{/Productos/EditarProductos/{id}(id=${r.idProducto})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                            <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                        </th>
+                                    </tr>
 
-
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
