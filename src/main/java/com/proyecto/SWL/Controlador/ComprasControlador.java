@@ -26,17 +26,17 @@ public class ComprasControlador {
     @GetMapping("/NuevaCompra") //Visualizar formulario
     public String nuevasCompras(Model model) {
         ComprasDTO comprasDTO = new ComprasDTO();
-        model.addAttribute("comprasVis", comprasDTO);
-        return "Admin/Compras/NuevasCompras";
+        model.addAttribute("NuevaCompra", comprasDTO);
+        return "Admin/Compras/NuevoCompras";
     }
 
     @PostMapping("/DatosNuevasCompras")
-    public String datosNuevos(@ModelAttribute("comprasVis") ComprasDTO comprasDTO, BindingResult result, Model model) {
+    public String datosNuevos(@ModelAttribute("NuevaCompra") ComprasDTO comprasDTO, BindingResult result, Model model) {
         if (result.hasErrors()){
             return "Admin/Compras/NuevaCompra?Error";
         }
         comprasServicio.GuardarNuevaCompra(comprasDTO);
-        return "redirect:/Compras/Vercompras?Correcto";
+        return "redirect:/Compras/Vercompras?CorrectoC";
     }
 
     @GetMapping("/EditarCompras/{id}")
@@ -49,7 +49,7 @@ public class ComprasControlador {
     @PostMapping("/EditarComprasFinal")
     public String EditarComprasFinal(@ModelAttribute("editarCompras")ComprasDTO comprasDTO, BindingResult result, Model model){
         if (result.hasErrors()){
-            return "Admin/Compras/EditarCompras?ErrorEstados";
+            return "Admin/Compras/EditarCompras?ErrorCompra";
         }if (comprasDTO.getIdVenta()==null){
             throw new IllegalArgumentException("No puede ser nulo");
         }

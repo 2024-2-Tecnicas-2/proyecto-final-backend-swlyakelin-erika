@@ -18,22 +18,27 @@ public class Compras {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVenta;
-    private Date fechaVenta;
+    private String fechaVenta;
     private Double monto;
 
     @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
     @JoinColumn(name = "idEstado") // JoinColumn sirve para nombrar la columna de la relacion
     private Estados estados; // llamando el objecto
 
+    @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
+    @JoinColumn(name = "producto") // JoinColumn sirve para nombrar la columna de la relacion
+    private Productos productos; // llamando el objecto
 
-    private ArrayList<Productos> producto = new ArrayList<Productos>();
-    private ArrayList<Usuario> usuario = new ArrayList<Usuario>();
-    private ArrayList<Pagos>  metodoPago = new ArrayList<Pagos>();
-    private ArrayList<Paises>  moneda = new ArrayList<Paises>();
+    @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
+    @JoinColumn(name = "usuario") // JoinColumn sirve para nombrar la columna de la relacion
+    private Usuario usuario; // llamando el objecto
 
+    @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
+    @JoinColumn(name = "metodoPago") // JoinColumn sirve para nombrar la columna de la relacion
+    private Pagos pagos; // llamando el objecto
 
-    public void generarVenta(){}
-    public void actualizarVenta(){}
-    public void anularVenta(){}
-    public void visualizarVenta(){}
+    @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
+    @JoinColumn(name = "moneda") // JoinColumn sirve para nombrar la columna de la relacion
+    private Paises paises; // llamando el objecto
+
 }

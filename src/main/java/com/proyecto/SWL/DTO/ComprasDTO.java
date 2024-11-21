@@ -9,13 +9,19 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ComprasDTO {
 
     private Long idVenta;
-    private Date fechaVenta;
+    private String fechaVenta;
     private Double monto;
-    private Double trmAplicada;
+    private Long idEstados;
+    private String estados;
+    private Long idPaises;
+    private String paises;
+    private Long idProductos;
+    private String productos;
+    private Long idpago;
+    private String pagos;
 }
 

@@ -334,7 +334,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Informacion de Productos</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Informacion de Compras</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generar Reporte</a>
                 </div>
@@ -342,13 +342,13 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="font-weight-bold text-primary">Tabla de Productos</h6>
+                            <h6 class="font-weight-bold text-primary">Tabla de Compras</h6>
                             <a th:href="@{/Compras/NuevaCompra}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                                 <i class="fa-solid fa-plus"></i> Crear Compra
                             </a>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success" role="alert" th:if="${param.CorrectoRoles}">
+                            <div class="alert alert-success" role="alert" th:if="${param.CorrectoC}">
                                 Registro Exitoso
                             </div>
                             <div class="table-responsive">
@@ -358,17 +358,16 @@
                                         <th><i class="fas fa-user"></i> Id Venta </th>
                                         <th><i class="fas fa-envelope"></i> Fecha de compra </th>
                                         <th><i class="fas fa-calendar"></i> monto </th>
-
                                         <th><i class="fas fa-cogs"></i> Opciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="r: ${VisCompras}">
-                                        <th th:text="${r.idVenta}"></th>
-                                        <th th:text="${r.fechaCompra}"></th>
-                                        <th th:text="${r.monto}"></th>
+                                    <tr th:each="c: ${VisCompras}">
+                                        <th th:text="${c.idVenta}"></th>
+                                        <th th:text="${c.fechaVenta}"></th>
+                                        <th th:text="${c.monto}"></th>
                                         <th>
-                                            <a th:href="@{/Compras/EditarCompras/{id}(id=${r.idVenta<})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                            <a th:href="@{/Compras/EditarCompras/{id}(id=${c.idVenta})}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                             <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
                                         </th>
                                     </tr>

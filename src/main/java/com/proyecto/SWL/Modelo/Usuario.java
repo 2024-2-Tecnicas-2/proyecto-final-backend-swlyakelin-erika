@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data //para crear setters and getters
 @Entity //Esto es porque debemos inicializar todas las clases porque spring trabaja con anotaciones=@ o beans @entity es para decirle a spring que es una entidad principal
@@ -51,5 +53,8 @@ public class Usuario {
     @ManyToOne(fetch = FetchType.LAZY) //Lazy es como una busqueda perezosa te trae la lista que tienen esa relacion, fecht = busqueda
     @JoinColumn(name = "idPaises") // JoinColumn sirve para nombrar la columna de la relacion
     private Paises paises; // llamando el objecto
+
+    @OneToMany(mappedBy = "usuario" , cascade = {CascadeType.MERGE,CascadeType.PERSIST}) // mappeBy es para busca el objecto , cascade = sirve para la crud esta relacion de merge y persist es para controlar las relaciones
+    private Set<Compras> compras = new HashSet<>(); // Set =  Los elementos que almacenes en un Set no pueden ser duplicados HashSet = HashSet es una implementación de la interfaz Set que no garantiza el orden de los elementos, pero asegura que cada objeto sea único.
 
 }

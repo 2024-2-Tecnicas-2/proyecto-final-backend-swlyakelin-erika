@@ -42,7 +42,7 @@ public class SecurityConfig {
                             if (isAdmin) {
                                 redirectUrl = "/";
                             } else if (isUser) {
-                                redirectUrl = "/User";
+                                redirectUrl = "Z/User";
                             }
 
                             response.sendRedirect(redirectUrl);
