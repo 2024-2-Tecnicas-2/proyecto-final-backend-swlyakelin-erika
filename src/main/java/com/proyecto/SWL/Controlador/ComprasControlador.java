@@ -46,10 +46,10 @@ public class ComprasControlador {
         return "Admin/Compras/EditarCompras";
     }
 
-    @PostMapping("/EditarEstadoFinal")
-    public String EditarEstadoFinal(@ModelAttribute("editarCompras")ComprasDTO comprasDTO, BindingResult result, Model model){
+    @PostMapping("/EditarComprasFinal")
+    public String EditarComprasFinal(@ModelAttribute("editarCompras")ComprasDTO comprasDTO, BindingResult result, Model model){
         if (result.hasErrors()){
-            return "Admin/Estados/EditarEstados?ErrorEstados";
+            return "Admin/Compras/EditarCompras?ErrorEstados";
         }if (comprasDTO.getIdVenta()==null){
             throw new IllegalArgumentException("No puede ser nulo");
         }

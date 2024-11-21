@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 package com.proyecto.SWL.Servicio;
 
 import com.proyecto.SWL.DTO.TipoDocumentosDTO;
@@ -119,4 +118,3 @@ public class UsuariosServicio {
 
 
 }
->>>>>>> 5105c0fd08bcff02dbc07f2716527e838a945686

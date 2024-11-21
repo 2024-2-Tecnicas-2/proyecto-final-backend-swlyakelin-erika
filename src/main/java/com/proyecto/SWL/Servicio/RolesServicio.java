@@ -20,6 +20,7 @@ public class RolesServicio {
     @Autowired
     private IEstados iEstados;
 
+
     private RolesDTO transforDTO(Roles roles){
         RolesDTO rolesDTO = new RolesDTO();
         rolesDTO.setIdRol(roles.getIdRol());
